@@ -1,6 +1,9 @@
 
-import React, { useEffect, useRef } from "react";
-const ESCAPE_KEYS = ["1", "2", "3", "4", "5"];
+import React, { useEffect, useRef, useState } from "react";
+
+import ReactPlayer from "react-player";
+// const ESCAPE_KEYS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const ESCAPE_KEYS = ["0", "1", "2", "3", "4"];
 const useEventListener = (eventName, handler, element = window) => {
 const savedHandler = useRef();
 
@@ -23,23 +26,23 @@ export default function Player({clips}){
 
         if (ESCAPE_KEYS.includes(key)) {
           console.log(`${key} key pressed!`);
-          //setClip(clips[key])
+          setClip(clips[key+1]);
+          
         }
       };
       useEventListener("keydown", handler);
 
-      //const [clip, setClip] = useState(clips[1])
+      const [clip, setClip] = useState(clips[0+1]);
+      const [sequence, setSequence] = useState();
+
+      const recordSequence = (clipIndex) => {
+
+      }
 
 
       return (
         <div className="video-player">
-            <video controls>
-                {clips.map((clip) => (
-                    <source  src={clip} type="video/mp4" />
-                ))}
-                
-            </video>
+            <ReactPlayer url={clip} />
         </div>  
-
       );
 }
