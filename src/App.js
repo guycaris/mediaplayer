@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Player from './components/Player';
+
+const videoClips = ['./clips/clip1.mp4', './clips/clip2.mp4', './clips/clip3.mp4', './clips/clip4.mp4', './clips/clip5.mp4'];
 
 function App() {
+
+  const [clip, setClip] = useState(videoClips[0])
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Player clips={clip} />    
     </div>
   );
 }
