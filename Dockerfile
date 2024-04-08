@@ -1,4 +1,4 @@
-FROM node:18.12.1-bullseye-slim
+FROM node:19.5.0-alpine
 
 # Set the working directory in the container
 WORKDIR /app
@@ -9,11 +9,13 @@ COPY package*.json ./
 # Install app dependencies
 RUN npm install
 
-# Copy necessary files
-COPY . .
+
+COPY public/ /app/public
+COPY src/ /app/src
+COPY package.json /app/
 
 # Expose port 3000 (adjust the port based on your application)
 EXPOSE 3000
 
 # CMD to run the application
-CMD [ "node", "src/index.js" ]
+CMD [ "npm", "start" ]
