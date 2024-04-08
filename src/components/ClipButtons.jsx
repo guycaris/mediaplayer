@@ -1,13 +1,13 @@
-export default function ClipButtons (){
-
+export default function ClipButtons ({onButtonClick}){
+    
     return(
         <>
             <div>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
+                <button onClick={()=>onButtonClick(1)}>1</button>
+                <button onClick={()=>onButtonClick(2)}>2</button>
+                <button onClick={()=>onButtonClick(3)}>3</button>
+                <button onClick={()=>onButtonClick(4)}>4</button>
+                <button onClick={()=>onButtonClick(5)}>5</button>
             </div>
         </>
     );
